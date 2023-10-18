@@ -10,6 +10,7 @@ prodcount.textContent="0";
     
 }
 
+
 fetch("db.json")
 .then(res => res.json())
 .then(data => {
@@ -22,8 +23,8 @@ fetch("db.json")
           <img src="${product.image}" alt="">
         </div>
         <div class="content">
-          <h3 class="title">${product.name}"></h3>
-          <h2 class="price">${product.price}"></h2>
+          <h3 class="title">${product.name}</h3>
+          <h2 class="price"><span>$</span>${product.price}</h2>
         </div>
         <div class="addbasket-btn-div">
           <button data-price=${product.price} data-id="${product.id}" class="addbasket">Add To Basket</button>
@@ -70,12 +71,15 @@ fetch("db.json")
 
 
 
-let menu_btn = document.querySelector(".header-title .menu-btn");
+let menu_btn = document.querySelector(" .menu-btn");
 let menu_dropdown = document.querySelector(".dropdown");
 
 menu_btn.addEventListener("click", function(){
     menu_dropdown.classList.toggle("active");
 });
+
+
+
 
 let home_btn = document.querySelector(".home-btn");
 let dropdown_home_ul = document.querySelector(" .dropdown-home-ul");
@@ -85,6 +89,7 @@ home_btn.addEventListener("mouseover", function(){
     dropdown_home_ul.classList.add("active");
     
 });
+
 
 home_btn.addEventListener("mouseout", function(){
     dropdown_home_ul.classList.remove("active");
@@ -132,12 +137,19 @@ pages_btn.addEventListener("mouseout", function(){
 
 
 let search_btn = document.querySelector(".search-btn");
-let search_input = document.querySelector(".search-input");
+let search_dropdown = document.querySelector(".search-dropdown");
 
 search_btn.addEventListener("click", function(){
-    search_input.classList.toggle("active");
+    search_dropdown.classList.toggle("active");
 });
 
+
+let card_btn = document.querySelector(".card-btn");
+let card_dropdown = document.querySelector(".card-add");
+
+card_btn.addEventListener("click", function(){
+    card_dropdown.classList.toggle("active");
+});
 
 $(document).ready(function() {
     var windowHeight = $(window).height();
@@ -155,10 +167,70 @@ $(document).ready(function() {
 });
 
 
+// Get the carousel element by its ID
+let carousel = document.getElementById("carouselExampleCaptions");
+
+// Define the slide index
+let slideIndex = 0;
+
+// Function to show the next slide
+function showNextSlide() {
+    // Increment the slide index
+    slideIndex++;
+
+    // If the slide index exceeds the total number of slides, reset it to 0
+    if (slideIndex >= carousel.querySelectorAll(".carousel-item").length) {
+        slideIndex = 0;
+    }
+
+    // Show the slide at the updated index
+    carousel.querySelector(".carousel-item.active").classList.remove("active");
+    carousel.querySelectorAll(".carousel-item")[slideIndex].classList.add("active");
+}
+
+// Interval function to automatically show next slide every 3 seconds (adjust the interval time as needed)
+setInterval(showNextSlide, 3000);
 
 
-const myCarousel = document.getElementById('myCarousel')
+// Add an event listener for the slide event
+carousel.addEventListener('slide.bs.carousel', function (event) {
+    // Get the index of the current slide
+    let slideIndex = event.to;
 
-myCarousel.addEventListener('slide.bs.carousel', event => {
-  // do something...
-})
+    // Hide all images initially
+    img1.style.display = 'none';
+    img2.style.display = 'none';
+    img2_2.style.display = 'none';
+    img3.style.display = 'none';
+
+    // Show the corresponding image based on the slide index
+    if (slideIndex === 0) {
+        img1.style.display = 'block';
+    } else if (slideIndex === 1) {
+        img2.style.display = 'block';
+        img2_2.style.display = 'block';
+    } else if (slideIndex === 2) {
+        img3.style.display = 'block';
+    }
+});
+
+// Add an event listener for the slid event to show the initial slide content
+carousel.addEventListener('slid.bs.carousel', function (event) {
+    // Get the index of the current slide
+    let slideIndex = event.to;
+
+    // Show the corresponding image based on the initial slide index
+    if (slideIndex === 0) {
+        img1.style.display = 'block';
+    } else if (slideIndex === 1) {
+        img2.style.display = 'block';
+        img2_2.style.display = 'block';
+    } else if (slideIndex === 2) {
+        img3.style.display = 'block';
+    }
+});
+
+
+
+
+

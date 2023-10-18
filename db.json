@@ -1,0 +1,68 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "BASKET WITH HANDLES",
+        "category": "home decor",
+        "price": 160,
+        "isNew": true,
+        "image": "src/img/h1-product-8-600x728.jpg"
+      },
+      {
+        "id": 2,
+        "name": "FLOWER CASE",
+        "category": "vases",
+        "price": 170,
+        "isNew": true,
+        "image": "./src/img/h1-product-7-600x728.jpg"
+      },
+      {
+        "id": 3,
+        "name": "MODERN TABLE",
+        "category": "basics",
+        "price": 75,
+        "isNew": false,
+        "image": "./src/img/h1-product-4-600x728.jpg"
+      },
+      {
+        "id": 4,
+        "name": "WALL CLOCK",
+        "category": "decoration",
+        "price": 110,
+        "isNew": false,
+        "image": "./src/img/h1-product-5-600x728.jpg"
+      },
+      {
+        "id": 5,
+        "name": "MODERN TABLE",
+        "category": "basics",
+        "price": 90,
+        "isNew": false,
+        "image": "./src/img/h1-product-6-600x728.jpg"
+      },
+      {
+        "id": 6,
+        "name": "POTTERY VASE",
+        "category": "vases",
+        "price": 60,
+        "isNew": false,
+        "image": "./src/img/h1-product-2-600x728.jpg"
+      },
+      {
+        "id": 7,
+        "name": "ROSE HOLDBACK",
+        "category": "lighting",
+        "price": 24,
+        "isNew": false,
+        "image": "./src/img/h1-product-3-1-600x728.jpg"
+      },
+      {
+        "id": 8,
+        "name": "MODERN CHAIR",
+        "category": "basics",
+        "price": 55,
+        "isNew": true,
+        "image": "./src/img/h1-product-1-600x728.jpg"
+      }
+    ]
+  }
