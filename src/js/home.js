@@ -1,13 +1,18 @@
-let productprice=document.getAnimations("prod-price")
+let productprice=document.getElementById("prod-price")
 let prodcount=document.getElementById("prod-all-count")
+let basket=JSON.parse(localStorage.getItem("basket"))
 
 if(localStorage.getItem("basket")===null){
     localStorage.setItem("basket", JSON.stringify([]))
 productprice.textContent="0";
 prodcount.textContent="0";
 }else{
-    let basket=JSON.parse(localStorage.getItem("basket"))
-    
+    let price=0;
+    basket.forEach(item=>{
+        price+=item.price*item.count
+        
+    })
+    productprice.innerText=price.toFixed(2)
 }
 
 
@@ -19,6 +24,7 @@ fetch("db.json")
     html +=`
     <div class="col-lg-3 custom-box">
        <div class="custom-card">
+       ${product.isNew ? "<span></span>" : ""}
         <div class="img-div">
           <img src="${product.image}" alt="">
         </div>
@@ -35,7 +41,7 @@ fetch("db.json")
     
     })
     document.querySelector("#Products .container .row").innerHTML = html;
-    let addBasketBtns=document.querySelectorAll("addbasket");
+    let addBasketBtns=document.querySelectorAll(".addbasket");
     addBasketBtns.forEach(btn=>{
     btn.addEventListener("click", function(e){
         if(localStorage.getItem("basket")===null){
@@ -61,8 +67,8 @@ fetch("db.json")
         price+=item.price*item.count
         
     })
-    productprice.innetText=price.toFixed(2)
-    prodcount.innerText=basket.length
+    productprice.innerText=price.toFixed(2)
+    // prodcount.innerText=basket.length
 
     localStorage.setItem("basket", JSON.stringify(basket))
     })

@@ -11,6 +11,7 @@ body{
     width: 100%;
     height: 130px;
     padding: 40px 0;
+    position: relative !important;
 }
 .header-img{
     display: flex;
@@ -22,6 +23,13 @@ height: 20px;
 width: auto;
 
 }
+
+/* .nav-item:hover .dropdown-home-ul{
+    padding: 20px 30px;
+    height: 430px;
+    transition: .4s;
+    margin-top: 30px;
+} */
 
 .header-right{
     display: flex;
@@ -97,10 +105,12 @@ width: auto;
     overflow: hidden;
     position: absolute;
     list-style: none;
+    z-index: 99;
 }
 .dropdown-home-ul a{
     text-decoration: none;
         color: aliceblue;
+        
 }
 .dropdown-home-ul.active{
     padding: 20px 30px;
@@ -120,6 +130,7 @@ width: auto;
     position: absolute;
     overflow: hidden;
     list-style: none;
+    z-index: 99;
    
 }
 .dropdown-shop a{
@@ -148,6 +159,7 @@ width: auto;
     line-height: 30px;
     position: absolute;
     list-style: none;
+    z-index: 99;
     
 }.dropdown-pages a{
     text-decoration: none;
@@ -171,6 +183,7 @@ width: auto;
     overflow: hidden;
     position: absolute;
     list-style: none;
+    z-index: 99;
 }
 .dropdown-elements a{
     text-decoration: none;
@@ -210,7 +223,7 @@ width: auto;
     position: absolute;
     top: 15%;
     right: 20%;
-    z-index: -1;
+    z-index: 99;
     overflow: hidden;
     opacity: 0;
 }
@@ -229,15 +242,15 @@ width: auto;
 }
 
 .dropdown{
-position: absolute;
+position: absolute !important;
 height: 750px;
 width: 600px;
 background-color: black;
-top: 100%;
-left: 100%;
+right: -100%;
 overflow: hidden;
-z-index: -1;
+z-index: 9;
 transition: .4s;
+top: 130px;
 }
 
 .dropdown .col{
@@ -252,9 +265,9 @@ transition: .4s;
 }
 
 .dropdown.active{
-    left: 60% !important;
-    top: 0 !important;
+    right: 0     !important;
     transition: .4s;
+    position: absolute !important;
 }
 
 .search-btn{
@@ -281,7 +294,7 @@ transition: .4s;
     padding-bottom: 6px;
     padding-left: 7px;
     width: 300px;
-    z-index: -1;
+    z-index: 99;
     overflow: hidden;
     opacity: 0;
 }
@@ -295,40 +308,165 @@ transition: .4s;
 }
 
 
-
-
-
-.carousel-item {
-    background-color: #f3f3f3;
-    width: 40px;
-    height: 600px;
-  
+@keyframes slide-right-to-left {
+    0% {
+        transform: translateX(20%); /* Start 3% to the right */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); /* Move to the original position */
+        opacity: 1;
+    }
 }
 
-.carousel-item img{
+.carousel-item h5, .carousel-item p {
+    animation: slide-right-to-left 1s ease; /* Customize animation duration and easing as needed */
+    animation-fill-mode: forwards; /* Keep the final state of the animation */
+}
+.carousel-item p {
+    animation: slide-right-to-left 1s ease; /* Customize animation duration and easing as needed */
+    animation-fill-mode: forwards; /* Keep the final state of the animation */
+    animation-delay: 0.2s;}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.img2, .img2-2, .img1, .img3 {
+    opacity: 0; /* Set initial opacity to 0 */
+}
+
+
+.img1, .img3 {
+    animation: slide-up 1s ease;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+.img2 { height:600px !important ;
+    animation: slide-down 1s ease;
+    animation-fill-mode: forwards;
+    opacity: 1;
+}
+
+.img2-2 {
+    animation: slide-down 1s ease;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s; /* Delay the animation by 0.2 seconds */
+    opacity: 1;
+}
+.slider {
+    margin-top: -97px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set the height to 100% of the viewport height for vertical centering */
+}
+#carouselExampleCaptions {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+.carousel-div{
+    display: flex;
+    align-items: center;
+}
+.carousel-indicators {
+    position: absolute;
+    top: 280px !important;
+    right: 1300px !important;
+    z-index: 2;
+    padding: 0;
+    margin-right: 15%;
+    margin-bottom: 1rem;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: center;
+    justify-content: flex-start; /* Align content to the left */
+
+}
+
+
+
+.carousel-indicators [data-bs-target] {
+    box-sizing: content-box;
+    flex: 0 1 auto;
+    width: 30px;
+    height: 3px;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    opacity: .5;
+    transition: opacity .6s ease;
+
+} .carousel-div{
+    color: #000000 !important;
+}
+.custom-prev,
+.custom-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px; /* Adjust the distance from the left edge */
+    transform-origin: center;
+}
+
+.carousel-inner {
+    background-color: #f3f3f3;
+    height: 600px;
+}
+
+.carousel-item img {
     float: right;
 }
-.carousel-item .img2, .img2-2{
-    height: 400px;
 
+.carousel-item .img2,
+.carousel-item .img2-2 {
+    height: 400px;
 }
 
-.carousel-caption{
+.carousel-caption {
     width: 400px;
 }
-.carousel-item h5{
+
+.carousel-item h5 {
     float: left;
+    font-size: 30px;
     color: black;
     margin-left: 20px;
-    
 }
-.carousel-item p{
-  
+
+.carousel-item p {
     float: left;
     color: #000000;
     margin: 20px 0;
 }
-
 
 .img-div{
     width: 100%;
@@ -487,9 +625,4 @@ justify-content: center;
     height: 50px;
     opacity: 1;
 }
-
-
-
-
-
 
