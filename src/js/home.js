@@ -238,5 +238,86 @@ carousel.addEventListener('slid.bs.carousel', function (event) {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const closeButton = document.querySelector('.close-button');
+    const dropdown = document.querySelector('.dropdown');
 
+    closeButton.addEventListener('click', function() {
+        dropdown.classList.remove('active');
+    });
+});
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginToggleBtn = document.getElementById('login-toggle');
+    const registerToggleBtn = document.getElementById('register-toggle');
+    const loginForm = document.querySelector('.login-form');
+    const registerForm = document.querySelector('.register-form');
+
+    // Function to show login form and hide register form
+    function showLoginForm() {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    }
+
+    // Function to show register form and hide login form
+    function showRegisterForm() {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+    }
+
+    // Event listener for login toggle button click
+    loginToggleBtn.addEventListener('click', function() {
+        showLoginForm();
+    });
+
+    // Event listener for register toggle button click
+    registerToggleBtn.addEventListener('click', function() {
+        showRegisterForm();
+    });
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loginBtn = document.querySelector('.login-btn');
+    const loginDropdown = document.querySelector('.login-dropdown');
+
+    // Function to open the login dropdown
+    function openDropdown() {
+        loginDropdown.style.display = 'block';
+    }
+
+    // Function to close the login dropdown
+    function closeDropdown() {
+        loginDropdown.style.display = 'none';
+    }
+
+    // Open the dropdown when loginBtn is clicked
+    loginBtn.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent the click event from reaching the document
+
+        // Toggle the dropdown visibility
+        if (loginDropdown.style.display === 'none' || loginDropdown.style.display === '') {
+            openDropdown();
+        } else {
+            closeDropdown();
+        }
+    });
+
+    // Close the dropdown when clicking outside the dropdown
+    document.addEventListener('click', function(event) {
+        if (!loginDropdown.contains(event.target) && loginDropdown.style.display === 'block') {
+            closeDropdown();
+        }
+    });
+
+    // Prevent click events inside the dropdown from closing it
+    loginDropdown.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+});
 

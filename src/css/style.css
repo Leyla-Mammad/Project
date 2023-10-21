@@ -250,7 +250,7 @@ right: -100%;
 overflow: hidden;
 z-index: 9;
 transition: .4s;
-top: 130px;
+top: 0px;
 }
 
 .dropdown .col{
@@ -270,6 +270,23 @@ top: 130px;
     position: absolute !important;
 }
 
+.close-button {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 30px;
+    color: aliceblue;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-button:focus {
+    outline: none;
+}
+.close-button:hover{
+    color: #979696;
+}
 .search-btn{
     border: 0;
     background: 0;
@@ -289,7 +306,7 @@ top: 130px;
     position: absolute;
     top: 15%;
     right: 10%;
-    background-color: #111;
+    background-color: #000000;
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 7px;
@@ -305,7 +322,114 @@ top: 130px;
 .search-dropdown input{
     background-color: #040404;
     border: 0;
+    color: #f3f3f3;
 }
+
+.login-container {
+    position: relative;
+}
+
+.login-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+}
+
+.login-dropdown {
+   
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    width: 300px !important;
+
+}
+.form-toggle{
+    display: flex;
+    justify-content: center;
+}
+.login-toggle, .register-toggle{
+    background-color: #2a2a2a;
+
+}
+.login-form{
+    height: 220px;
+}
+
+ .register-form {
+display: none;
+height: 330px !important;
+}
+.register-form h6{
+    font-weight: 300;
+    font-size: 12px;
+    color: #5e5e5e;
+}
+
+.register-form a{
+    text-decoration: none;
+    color: #000000;
+
+}
+.login-dropdown form{
+   text-align: center;
+   margin: 40px 0 !important;
+}
+
+
+.login-dropdown form input {
+margin-bottom: 10px;
+padding: 10px;
+border: 1px solid #ccc;
+width: 95%;
+}
+.form-check-input{
+    width: 7px !important;
+    margin: 0 20px;    color: #333 !important;
+    float: left;
+}
+.form-check-label{
+    font-size: 10px;
+    margin-left: -170px;
+}
+.login-form a{
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    margin: 10px 0 10px -120px !important;
+}
+.checkbox{
+    margin-bottom: 20px;
+}
+
+.login-dropdown .form-toggle button{
+background-color: #ffffff;
+color: rgb(0, 0, 0);
+border: none;
+padding: 10px 40px;
+cursor: pointer;
+}
+
+.login-dropdown form button{
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    margin: 10px 0 20px 0;
+    width: 80%;
+    }
+
+.login-container:hover .login-dropdown {
+    display: block;
+}
+
+
 
 
 @keyframes slide-right-to-left {
@@ -383,38 +507,30 @@ top: 130px;
     position: relative;
 }
 
-
-.carousel-div{
-    display: flex;
-    align-items: center;
-}
 .carousel-indicators {
     position: absolute;
-    top: 280px !important;
-    right: 1300px !important;
-    z-index: 2;
-    padding: 0;
-    margin-right: 15%;
-    margin-bottom: 1rem;
-    margin-left: 15%;
+    top: 50px !important;
+    left: -220px !important;
+    z-index: 1000 !important;
     display: flex;
     flex-direction: column;
-  
-    align-items: center;
-    justify-content: flex-start; /* Align content to the left */
-
 }
 
-
+.carousel-div {
+    display: flex;
+    align-items: center;
+     color: rgb(0, 0, 0) !important;
+    padding: 10px 20px; /* Add padding as needed */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    cursor: pointer;
+    z-index: 1000;}
+    
 
 .carousel-indicators [data-bs-target] {
     box-sizing: content-box;
     flex: 0 1 auto;
     width: 30px;
     height: 3px;
-    padding: 0;
-    margin-right: 3px;
-    margin-left: 3px;
     text-indent: -999px;
     cursor: pointer;
     background-color: #fff;
@@ -422,12 +538,9 @@ top: 130px;
     border: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    opacity: .5;
     transition: opacity .6s ease;
 
-} .carousel-div{
-    color: #000000 !important;
-}
+} 
 .custom-prev,
 .custom-next {
     position: absolute;
@@ -437,7 +550,7 @@ top: 130px;
     transform-origin: center;
 }
 
-.carousel-inner {
+.carousel-item {
     background-color: #f3f3f3;
     height: 600px;
 }
@@ -513,6 +626,16 @@ cursor: pointer;
 }
 
 
+
+.navbar-expand-lg{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 80px;
+    font-size: small;
+}
+.navbar-expand-lg .container-fluid .col-lg-6 .navbar-nav .nav-item-cards a:hover{
+    color: #000000 !important;
+}
 
 .customer-service{
     margin: 150px 0;
