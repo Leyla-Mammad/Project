@@ -24,19 +24,21 @@ fetch("db.json")
     html +=`
     <div class="col-lg-3 custom-box">
        <div class="custom-card">
-       ${product.isNew ? "<span></span>" : ""}
+       <h6 class="new">${product.isNew ? "<span></span>" : ""}</h6>
         <div class="img-div">
           <img src="${product.image}" alt="">
         </div>
+        <div class="quick"><a href="#">QUICK LOOK</a><i class="fa-solid fa-heart"></i></div>
         <div class="content">
           <h3 class="title">${product.name}</h3>
           <h2 class="price"><span>$</span>${product.price}</h2>
         </div>
         <div class="addbasket-btn-div">
-          <button data-price=${product.price} data-id="${product.id}" class="addbasket">Add To Basket</button>
+          <button data-price=${product.price} data-id="${product.id}" class="addbasket">Add To Cart</button>
         </div>
        </div>
       </div>
+     
     `
     
     })
@@ -95,12 +97,15 @@ home_btn.addEventListener("mouseover", function(){
     dropdown_home_ul.classList.add("active");
     
 });
-
-
 home_btn.addEventListener("mouseout", function(){
     dropdown_home_ul.classList.remove("active");
 
 });
+
+
+
+
+
 
 let shop_btn = document.querySelector(".shop-btn");
 let dropdown_shop = document.querySelector(" .dropdown-shop");
@@ -251,6 +256,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+let login_btn = document.querySelector(" .login-btn");
+let login_dropdown = document.querySelector(".login-dropdown");
+
+
+login_btn.addEventListener("click", function(){
+    login_dropdown.classList.toggle("active");
+});
 document.addEventListener('DOMContentLoaded', function() {
     const loginToggleBtn = document.getElementById('login-toggle');
     const registerToggleBtn = document.getElementById('register-toggle');
