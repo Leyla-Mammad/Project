@@ -24,7 +24,7 @@ fetch("db.json")
     html +=`
     <div class="col-lg-3 custom-box">
        <div class="custom-card">
-       <h6 class="new">${product.isNew ? "<span></span>" : ""}</h6>
+       <h6 class="new">${product.isNew ? "<span>New</span>" : ""}</h6>
         <div class="img-div">
           <img src="${product.image}" alt="">
         </div>
@@ -79,11 +79,21 @@ fetch("db.json")
 
 
 
+
+
 let menu_btn = document.querySelector(" .menu-btn");
 let menu_dropdown = document.querySelector(".dropdown");
 
-menu_btn.addEventListener("click", function(){
+menu_btn.addEventListener("click", function(event) {
+    event.stopPropagation(); // Prevents the click event from reaching the document body
     menu_dropdown.classList.toggle("active");
+});
+
+// Event listener to close the search dropdown when clicked outside of it
+document.body.addEventListener("click", function(event) {
+    if (!menu_btn.contains(event.target) && !menu_dropdown.contains(event.target)) {
+        menu_dropdown.classList.remove("active");
+    }
 });
 
 
@@ -146,21 +156,60 @@ pages_btn.addEventListener("mouseout", function(){
 
 });
 
-
 let search_btn = document.querySelector(".search-btn");
 let search_dropdown = document.querySelector(".search-dropdown");
 
-search_btn.addEventListener("click", function(){
+// Event listener to open/close the search dropdown when search button is clicked
+search_btn.addEventListener("click", function(event) {
+    event.stopPropagation(); // Prevents the click event from reaching the document body
     search_dropdown.classList.toggle("active");
 });
+
+// Event listener to close the search dropdown when clicked outside of it
+document.body.addEventListener("click", function(event) {
+    if (!search_btn.contains(event.target) && !search_dropdown.contains(event.target)) {
+        search_dropdown.classList.remove("active");
+    }
+});
+
+
+
+
+
 
 
 let card_btn = document.querySelector(".card-btn");
 let card_dropdown = document.querySelector(".card-add");
 
-card_btn.addEventListener("click", function(){
+card_btn.addEventListener("click", function(event) {
+    event.stopPropagation(); // Prevents the click event from reaching the document body
     card_dropdown.classList.toggle("active");
 });
+
+// Event listener to close the search dropdown when clicked outside of it
+document.body.addEventListener("click", function(event) {
+    if (!card_btn.contains(event.target) && !card_dropdown.contains(event.target)) {
+        card_dropdown.classList.remove("active");
+    }
+});
+
+
+let filter = document.querySelector(".filter");
+let filter_dropdown = document.querySelector(" .filter-dropdown");
+
+
+filter.addEventListener("mouseover", function(){
+    filter_dropdown.classList.add("active");
+    
+});
+filter.addEventListener("mouseout", function(){
+    filter_dropdown.classList.remove("active");
+
+});
+
+
+
+
 
 $(document).ready(function() {
     var windowHeight = $(window).height();
@@ -239,6 +288,34 @@ carousel.addEventListener('slid.bs.carousel', function (event) {
     } else if (slideIndex === 2) {
         img3.style.display = 'block';
     }
+});
+
+
+// Get the line elements
+let line1 = document.querySelector(".line1");
+let line2 = document.querySelector(".line2");
+let line3 = document.querySelector(".line3");
+
+// Get the carousel element by its ID
+let carousels = document.getElementById("carouselExampleCaptions");
+
+// Add click event listeners to the lines
+line1.addEventListener('click', function() {
+    // Show img1 by setting the slide index to 0
+    carousels.querySelector(".carousel-item.active").classList.remove("active");
+    carousels.querySelectorAll(".carousel-item")[0].classList.add("active");
+});
+
+line2.addEventListener('click', function() {
+    // Show img2 by setting the slide index to 1
+    carousels.querySelector(".carousel-item.active").classList.remove("active");
+    carousels.querySelectorAll(".carousel-item")[1].classList.add("active");
+});
+
+line3.addEventListener('click', function() {
+    // Show img3 by setting the slide index to 2
+    carousels.querySelector(".carousel-item.active").classList.remove("active");
+    carousels.querySelectorAll(".carousel-item")[2].classList.add("active");
 });
 
 
@@ -332,4 +409,3 @@ document.addEventListener('DOMContentLoaded', function() {
         event.stopPropagation();
     });
 });
-

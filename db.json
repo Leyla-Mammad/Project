@@ -11,7 +11,7 @@
       {
         "id": 2,
         "name": "FLOWER CASE",
-        "category": "vases",
+        "category": "vases" , 
         "price": 170,
         "isNew": true,
         "image": "./src/img/h1-product-7-600x728.jpg"
@@ -29,7 +29,7 @@
         "name": "WALL CLOCK",
         "category": "decoration",
         "price": 110,
-        "isNew": false,
+        "isNew": true,
         "image": "./src/img/h1-product-5-600x728.jpg"
       },
       {
