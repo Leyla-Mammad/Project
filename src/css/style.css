@@ -120,7 +120,7 @@ body {
   height: 0px;
   line-height: 30px;
   position: absolute;
-  opacity: 0;
+  opacity: 1;
   list-style: none;
   z-index: 99;
   left: 2%;
